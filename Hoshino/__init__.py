@@ -37,7 +37,7 @@ custom_texts = {
 }
 
 pagination = Helpo(
-    client=bot,
+    client=pyrohoshi,
     modules_path="fwd/plugins",
     buttons_per_page=15,
     texts=custom_texts,
