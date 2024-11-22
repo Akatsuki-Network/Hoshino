@@ -1,5 +1,5 @@
 from pyrogram import Client, filters, types as t
-from Hoshino.helpers.decorators import command 
+from Hoshino.helpers.pdecorators import command 
 
 
 @Client.on_message(filters.command("start"))
