@@ -38,7 +38,7 @@ custom_texts = {
 
 pagination = Helpo(
     client=pyrohoshi,
-    modules_path="fwd/plugins",
+    modules_path="Hoshino/plugins",
     buttons_per_page=15,
     texts=custom_texts,
 )
