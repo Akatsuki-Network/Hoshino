@@ -4,6 +4,7 @@ from pyrogram import Client
 from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
 from Helpo import Helpo
+from config import *
 
 # bogging
 logging.basicConfig(
@@ -18,7 +19,7 @@ logging.getLogger("pyrate_limiter").setLevel(logging.ERROR)
 
 hoshi = logging.getLogger(__name__)
 
-ptbhoshi = Application.builder().token(TOKEN).build()
+ptbhoshi = Application.builder().token(BOT_TOKEN).build()
 
 
 custom_texts = {
@@ -59,4 +60,4 @@ class pyrohoshi(Client):
         await super().stop()
         hoshi.info("AiHoshino The Trash Bot Is Shutdown Now")
 
-dhoshi = AsyncIOMotorClient(mongo_url)
+# dhoshi = AsyncIOMotorClient(mongo_url)
