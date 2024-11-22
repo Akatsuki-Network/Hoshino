@@ -36,7 +36,7 @@ def command(command, filters=None, block=False):
                 filters=filters,
                 block=block
             )
-        application.add_handler(handler)
+        ptbhoshi.add_handler(handler)
         return func
     return decorator
 
