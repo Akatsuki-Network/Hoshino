@@ -1,9 +1,10 @@
 from Hoshino import ptbhoshi, pyrohoshi
 
-def main() -> None:    
-   
-    ptbhoshi.run_polling()    
-
+async def main():    
+   pyrohoshi().run()   
+    
 if __name__ == "__main__":
-    main()
-    pyrohoshi().run()
+   ptbhoshi.run_polling()  
+   pyrohoshi().loop.run_until_complete(main())
+   
+    
