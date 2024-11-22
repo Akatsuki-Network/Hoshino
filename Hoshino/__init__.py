@@ -4,7 +4,7 @@ from pyrogram import Client
 from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
 from Helpo import Helpo
-from config import *
+from config import BOT_TOKEN, API_ID, API_HASH, 
 
 # bogging
 logging.basicConfig(
