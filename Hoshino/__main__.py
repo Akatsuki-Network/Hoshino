@@ -1,8 +1,8 @@
-from Hoshino import ptbhoshi
+from Hoshino import ptbhoshi, pyrohoshi
 
-def main() -> None:
-    
+def main() -> None:    
     ptbhoshi.run_polling()
-
+    pyrohoshi.start()
+    
 if __name__ == "__main__":
     main()
