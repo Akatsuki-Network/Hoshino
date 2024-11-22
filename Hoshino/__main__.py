@@ -1,14 +1,10 @@
 from Hoshino import ptbhoshi, pyrohoshi
-import pyrogram
+import asyncio
 
-def main():
-    ptbhoshi.run_polling()
+async def main():
+    await ptbhoshi.initialize()
+    await pyrohoshi.start()
 
-async def run_clients():
-      await pyrohoshi.start()
-      await pyrogram.idle()
-             
 if __name__ == "__main__":
-    main()
-    pyrohoshi.loop.run_until_complete(run_clients())
-    
+    import asyncio
+    asyncio.run(main())
