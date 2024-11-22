@@ -4,7 +4,7 @@ apscheduler
 cachetools  
 motor  
 pymongo  
-pyrogram  
+git+https://github.com/KurimuzonAkuma/pyrogram.git  
 pyrohelpo  
 python-dotenv  
 python-telegram-bot  
