@@ -1,5 +1,4 @@
 from Hoshino import ptbhoshi, pyrohoshi
-import asyncio
 
 async def main():
     await ptbhoshi.initialize()
