@@ -1,5 +1,5 @@
 import os
-from Hoshino import hoshi as logger
+from Hoshino.__init__ import hoshi as logger
 from sys import exit
 
 API_ID = os.getenv("API_ID", 28122413) or (logger.error("API_ID is not defined.") or exit(1))
