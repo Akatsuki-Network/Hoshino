@@ -2,9 +2,8 @@ from Hoshino import ptbhoshi, pyrohoshi
 
 def main() -> None:    
    
-    ptbhoshi.run_polling()
-    ai_hoshi = pyrohoshi()  
-    ai_hoshi.run() 
+    ptbhoshi.run_polling()    
 
 if __name__ == "__main__":
     main()
+    pyrohoshi().run()
