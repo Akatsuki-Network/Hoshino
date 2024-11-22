@@ -1,5 +1,5 @@
 from Hoshino import ptbhoshi
-from config import Config
+from config import BOT_UNAME
 from telegram import ChatMemberOwner, ChatMemberAdministrator, constants, CallbackQuery
 from telegram.ext import CommandHandler, MessageHandler, PrefixHandler, CallbackQueryHandler, filters
 import sys
@@ -8,7 +8,7 @@ from functools import wraps
 
 PREFIX = ["/", ".", "!", "", "?", "\""]
 
-BOT_USERNAME = Config.BOT_UNAME
+BOT_USERNAME = BOT_UNAME
 
 def command(command, filters=None, block=False):
     def decorator(func):
