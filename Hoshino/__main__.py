@@ -1,9 +1,9 @@
 from Hoshino import ptbhoshi, pyrohoshi
 
-async def main():    
-    await pyrohoshi.start()
-
+def main() -> None:
+    """Run bot."""
+    ptbhoshi.run_polling(drop_pending_updates=True)
+    
 if __name__ == "__main__":
-    import asyncio
-    ptbhoshi.run_polling()
-    asyncio.run(main())
+    pyrohoshi.start()
+    main()
