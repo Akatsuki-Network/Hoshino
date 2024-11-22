@@ -20,6 +20,7 @@ logging.getLogger("pyrate_limiter").setLevel(logging.ERROR)
 hoshi = logging.getLogger(__name__)
 
 ptbhoshi = Application.builder().token(BOT_TOKEN).build()
+pyrohoshi = Client(name="AiHoshi", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Hoshino"))
 
 
 custom_texts = {
@@ -35,29 +36,9 @@ custom_texts = {
     "support_url": "https://t.me/YourSupportBot",
 }
 
-
-class pyrohoshi(Client):
-    def __init__(self):
-        super().__init__(
-            "AiHoshi",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            bot_token=BOT_TOKEN,
-            plugins=dict(root="Hoshino.plugins"),
-        ) 
-        self.helpo = Helpo(
-          client=self,
-          modules_path="Hoshino/plugins",
-          buttons_per_page=15,
-          texts=custom_texts,
-        )
-    async def start(self):
-        await super().start()
-        hoshi.info("AiHoshi The Trash Bot Started Successfully")
-        print("Helpo Initialized with Modules: {', '.join(self.helpo.modules.keys())}")
-      
-    async def stop(self):
-        await super().stop()
-        hoshi.info("AiHoshino The Trash Bot Is Shutdown Now")
-
-# dhoshi = AsyncIOMotorClient(mongo_url)
+pagination = Helpo(
+    client=bot,
+    modules_path="fwd/plugins",
+    buttons_per_page=15,
+    texts=custom_texts,
+)
