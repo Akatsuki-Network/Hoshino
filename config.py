@@ -1,13 +1,12 @@
-import os
 from sys import exit
 
-API_ID = os.getenv("API_ID", 28122413) or (print("API_ID is not defined.") or exit(1))
-API_HASH = os.getenv("API_HASH", "750432c8e1b221f91fd2c93a92710093") or (print("API_HASH is not defined.") or exit(1))
-BOT_TOKEN = os.getenv("BOT_TOKEN", "7680292640:AAFMnLNbZcmkkEILKIw5MpgrtqGDLhDG5hs") or (print("BOT_TOKEN is not defined.") or exit(1))
-#SUPPORT_CHAT = os.getenv("SUPPORT_CHAT") or (logger.error("SUPPORT_CHAT is not defined.") or exit(1))
-#UPDATE_CHANNEL = os.getenv("UPDATE_CHANNEL") or (logger.error("UPDATE_CHANNEL is not defined.") or exit(1))
-BOT_UNAME = os.getenv("BOT_UNAME", "@NsfwGuardianBot") or (print("BOT_UNAME is not defined.") or exit(1))
-#MONGO_URI = os.getenv("MONGO_URI", "") or (logger.error("MONGO_URI is not defined.") or exit(1))
+API_ID = 28122413  # Replace with your actual API_ID
+API_HASH = "750432c8e1b221f91fd2c93a92710093"  # Replace with your actual API_HASH
+BOT_TOKEN = "7680292640:AAFMnLNbZcmkkEILKIw5MpgrtqGDLhDG5hs"  # Replace with your actual BOT_TOKEN
+# SUPPORT_CHAT = ""  # Uncomment and set the value if needed
+# UPDATE_CHANNEL = ""  # Uncomment and set the value if needed
+BOT_UNAME = "@NsfwGuardianBot"  # Replace with your actual BOT_UNAME
+# MONGO_URI = ""  # Uncomment and set the value if needed
 
-DEV_LIST = list(map(int, os.getenv("DEV_LIST", "6312693124").split())) or (print("DEV_LIST is not defined.") or exit(1))
-SUDO = list(map(int, os.getenv("SUDO", "6312693124").split())) or (print("SUDO is not defined.") or exit(1))
+DEV_LIST = [6312693124]  # Replace with actual developer user IDs
+SUDO = [6312693124]  # Replace with actual sudo user IDs
