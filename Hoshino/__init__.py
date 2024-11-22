@@ -1,12 +1,10 @@
-import logging, sys 
-import os
-from pyrogram import Client 
+import logging
+from pyrogram import Client
 from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
 from Helpo import Helpo
 from config import BOT_TOKEN, API_ID, API_HASH
 
-# bogging
 logging.basicConfig(
     format="%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s",
     handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
@@ -21,7 +19,6 @@ hoshi = logging.getLogger(__name__)
 
 ptbhoshi = Application.builder().token(BOT_TOKEN).build()
 pyrohoshi = Client(name="AiHoshi", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Hoshino"))
-
 
 custom_texts = {
     "help_menu_title": "**🛠 Custom Help Menu**",
