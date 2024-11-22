@@ -1,0 +1,12 @@
+aiohttp  
+apscheduler  
+cachetools  
+motor  
+pymongo  
+pyrogram  
+pyrohelpo  
+python-dotenv  
+python-telegram-bot  
+pyrate-limiter  
+requests  
+tgcrypto
