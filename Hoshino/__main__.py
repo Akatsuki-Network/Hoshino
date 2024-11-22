@@ -1,4 +1,4 @@
-from Hoshino import ptbhoshi, hoshi  
+from Hoshino import ptbhoshi
 
 def main() -> None:
     
