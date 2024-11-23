@@ -1,5 +1,6 @@
 from Hoshino.helpers.pdecorators import command
 from pyrogram import Client, filters, types as t, enums
+from Hoshino import pyrohoshi as bot
 
 @Client.on_message(filters.command(["start", "help", "repo", "source"]))
 async def start(_: Client, m: t.Message):
