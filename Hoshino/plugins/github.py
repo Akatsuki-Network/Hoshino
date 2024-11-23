@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 @Client.on_message(filters.command(["git","github"]))
-async def _github(_, message):
+async def github(client, message):
     if len(message.command) < 2:
         return await message.reply_text("**Provide Me Your Git Username.**")
 
@@ -57,5 +57,5 @@ __HELP__ = """
 
 """
 
-__MODNAME__ = "Github"
+__MODULE__ = "Github"
 
