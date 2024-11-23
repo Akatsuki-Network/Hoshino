@@ -49,12 +49,15 @@ class TelegramLogHandler(logging.Handler):
         self.chat_id = chat_id
         self.client = client
 
-    async def emit(self, record):
+    def emit(self, record):
         if record.levelno < logging.WARNING:
             return
+        asyncio.create_task(self._async_emit(record))
+
+    async def _async_emit(self, record):
         try:
             log_entry = self.format(record)
-            await self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`", parse_mode="markdown")
+            await self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
         except Exception as e:
             hoshi.error(f"Failed to send log to Telegram: {e}")
 
