@@ -131,6 +131,6 @@ async def bot_inline(_, inline_query):
         await inline_query.answer(answers[-1], cache_time=0)
 
 
-__MODNAME__ = "Wʜɪꜱᴘʜᴇʀ"
+__MODULE__ = "Wʜɪꜱᴘʜᴇʀ"
 
 __HELP__ = "chipset"
