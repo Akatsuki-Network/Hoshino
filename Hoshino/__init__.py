@@ -40,6 +40,9 @@ pagination = Helpo(
     texts=custom_texts,
 )
 
+print(f"Helpo Initialized with Modules: {', '.join(pagination.modules.keys())}")
+
+
 class TelegramLogHandler(logging.Handler):
     def __init__(self, chat_id, client: Client):
         super().__init__()
