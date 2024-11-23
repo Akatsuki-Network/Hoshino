@@ -198,3 +198,8 @@ async def cringe(client, msg):
     result = await get_json(url)
     img = result['url']
     await msg.reply_animation(img)
+
+
+__MODULE__ = "waifu"
+
+__HELP__ = "waifu"
