@@ -49,6 +49,11 @@ class TelegramLogHandler(logging.Handler):
         super().__init__()
         self.chat_id = chat_id
         self.client = client
+        self.client_ready = asyncio.Event()
+
+    def set_client_ready(self):
+        """Mark the client as ready to send messages."""
+        self.client_ready.set()
 
     def emit(self, record):
         if record.levelno < logging.WARNING:
@@ -62,6 +67,7 @@ class TelegramLogHandler(logging.Handler):
 
     async def _async_emit(self, record):
         try:
+            await self.client_ready.wait()  
             log_entry = self.format(record)
             await self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
         except Exception as e:
