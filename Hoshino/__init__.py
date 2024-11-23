@@ -3,7 +3,7 @@ from pyrogram import Client
 from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
 from Helpo import Helpo
-from config import BOT_TOKEN, API_ID, API_HASH
+from config import BOT_TOKEN, API_ID, API_HASH, CHAT_ID
 
 logging.basicConfig(
     format="%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s",
@@ -39,3 +39,23 @@ pagination = Helpo(
     buttons_per_page=15,
     texts=custom_texts,
 )
+
+class TelegramLogHandler(logging.Handler):
+    def __init__(self, chat_id, client: Client):
+        super().__init__()
+        self.chat_id = chat_id
+        self.client = client
+
+    def emit(self, record):
+        try:
+            log_entry = self.format(record)
+            self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
+        except Exception as e:
+            hoshi.error(f"Failed to send log to Telegram: {e}")
+
+CHAT_ID = 123456789
+telegram_handler = TelegramLogHandler(chat_id=CHAT_ID, client=pyrohoshi)
+telegram_handler.setLevel(logging.ERROR)
+formatter = logging.Formatter("%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s")
+telegram_handler.setFormatter(formatter)
+hoshi.addHandler(telegram_handler)
