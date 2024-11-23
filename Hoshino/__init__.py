@@ -56,7 +56,6 @@ class TelegramLogHandler(logging.Handler):
         except Exception as e:
             hoshi.error(f"Failed to send log to Telegram: {e}")
 
-CHAT_ID = 123456789
 telegram_handler = TelegramLogHandler(chat_id=CHAT_ID, client=pyrohoshi)
 telegram_handler.setLevel(logging.ERROR)
 formatter = logging.Formatter("%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s")
