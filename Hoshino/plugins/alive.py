@@ -42,3 +42,11 @@ async def jinda(update, context):
         parse_mode="Markdown",
         reply_markup=button,
     )
+
+__MODULE__ = "Aʟɪᴠᴇ"
+
+__HELP__ = """
+
+• `/alive` - ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ ᴏʀ ɴᴏᴛ
+
+"""
