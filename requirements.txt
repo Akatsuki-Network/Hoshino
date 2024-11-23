@@ -11,3 +11,4 @@ python-telegram-bot
 pyrate-limiter  
 requests  
 tgcrypto
+httpx
