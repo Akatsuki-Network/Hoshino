@@ -51,10 +51,10 @@ class TelegramLogHandler(logging.Handler):
         self.chat_id = chat_id
         self.client = client
 
-    def emit(self, record):
+    async def emit(self, record):
         try:
             log_entry = self.format(record)
-            self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
+            await self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
         except Exception as e:
             hoshi.error(f"Failed to send log to Telegram: {e}")
 
