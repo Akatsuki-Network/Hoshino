@@ -6,6 +6,7 @@ from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
 from Helpo import Helpo
 from config import BOT_TOKEN, API_ID, API_HASH, CHAT_ID
+import asyncio
 
 logging.basicConfig(
     format="%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s",
