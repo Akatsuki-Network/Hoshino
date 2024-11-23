@@ -10,7 +10,7 @@ from config import BOT_TOKEN, API_ID, API_HASH, CHAT_ID
 logging.basicConfig(
     format="%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s",
     handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
-    level=logging.DEBUG,
+    level=logging.INFO,
 )
 
 logging.getLogger("apscheduler").setLevel(logging.ERROR)
@@ -42,8 +42,6 @@ pagination = Helpo(
     texts=custom_texts,
 )
 
-print(f"Helpo Initialized with Modules: {', '.join(pagination.modules.keys())}")
-
 
 class TelegramLogHandler(logging.Handler):
     def __init__(self, chat_id, client: Client):
@@ -51,15 +49,18 @@ class TelegramLogHandler(logging.Handler):
         self.chat_id = chat_id
         self.client = client
 
-    async def emit(self, record):
+    def emit(self, record):
+        if record.levelno < logging.WARNING:
+            return
         try:
             log_entry = self.format(record)
-            await self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`")
+            self.client.loop.create_task(self.client.send_message(chat_id=self.chat_id, text=f"`{log_entry}`"))
         except Exception as e:
             hoshi.error(f"Failed to send log to Telegram: {e}")
 
+
 telegram_handler = TelegramLogHandler(chat_id=CHAT_ID, client=pyrohoshi)
-telegram_handler.setLevel(logging.DEBUG)
+telegram_handler.setLevel(logging.WARNING)
 formatter = logging.Formatter("%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s")
 telegram_handler.setFormatter(formatter)
 hoshi.addHandler(telegram_handler)
@@ -71,10 +72,7 @@ def handle_exception(exc_type, exc_value, exc_traceback):
     trace = ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback))
     hoshi.critical(f"Unhandled exception:\n{trace}")
 
+
 sys.excepthook = handle_exception
 
-hoshi.debug("This is a debug log.")
-hoshi.info("This is an info log.")
-hoshi.warning("This is a warning log.")
-hoshi.error("This is an error log.")
-hoshi.critical("This is a critical log.")
+hoshi.warning("Application initialized. Logs will now be sent for warnings and above.")
