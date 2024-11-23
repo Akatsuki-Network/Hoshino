@@ -26,3 +26,6 @@ async def ncosplay(_,msg):
 
        await msg.reply_photo(ncosplay, caption=f"Ncosplay By @{app.me.username}")
       
+__MODULE__ = "cosplay"
+
+__HELP__ = "bokya"
