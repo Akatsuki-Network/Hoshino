@@ -1,4 +1,6 @@
 import logging
+import sys
+import traceback
 from pyrogram import Client
 from telegram.ext import Application
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -8,7 +10,7 @@ from config import BOT_TOKEN, API_ID, API_HASH, CHAT_ID
 logging.basicConfig(
     format="%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s",
     handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
-    level=logging.INFO,
+    level=logging.DEBUG,
 )
 
 logging.getLogger("apscheduler").setLevel(logging.ERROR)
@@ -57,7 +59,22 @@ class TelegramLogHandler(logging.Handler):
             hoshi.error(f"Failed to send log to Telegram: {e}")
 
 telegram_handler = TelegramLogHandler(chat_id=CHAT_ID, client=pyrohoshi)
-telegram_handler.setLevel(logging.ERROR)
+telegram_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(asctime)s - [HOSHINO] - %(levelname)s - %(name)s - %(message)s")
 telegram_handler.setFormatter(formatter)
 hoshi.addHandler(telegram_handler)
+
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    trace = ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+    hoshi.critical(f"Unhandled exception:\n{trace}")
+
+sys.excepthook = handle_exception
+
+hoshi.debug("This is a debug log.")
+hoshi.info("This is an info log.")
+hoshi.warning("This is a warning log.")
+hoshi.error("This is an error log.")
+hoshi.critical("This is a critical log.")
