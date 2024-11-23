@@ -53,7 +53,12 @@ class TelegramLogHandler(logging.Handler):
     def emit(self, record):
         if record.levelno < logging.WARNING:
             return
-        asyncio.create_task(self._async_emit(record))
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError: 
+            asyncio.run(self._async_emit(record))
+        else:
+            loop.create_task(self._async_emit(record))
 
     async def _async_emit(self, record):
         try:
