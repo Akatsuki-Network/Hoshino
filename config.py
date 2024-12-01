@@ -7,6 +7,6 @@ BOT_TOKEN = "7680292640:AAFMnLNbZcmkkEILKIw5MpgrtqGDLhDG5hs"  # Replace with you
 # UPDATE_CHANNEL = ""  # Uncomment and set the value if needed
 BOT_UNAME = "@NsfwGuardianBot"  # Replace with your actual BOT_UNAME
 # MONGO_URI = ""  # Uncomment and set the value if needed
-CHAT_ID = -1002186444493
+CHAT_ID = -1001830463327
 DEV_LIST = [6312693124]  # Replace with actual developer user IDs
 SUDO = [6312693124]  # Replace with actual sudo user IDs
