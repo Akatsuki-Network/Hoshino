@@ -84,3 +84,7 @@ async def handle_inline_python(client: Client, inline_query: InlineQuery):
             is_personal=True,
             cache_time=0,
             )
+
+
+__HELP__ = "INLINE"
+__MODULE__ = "INLINE"
